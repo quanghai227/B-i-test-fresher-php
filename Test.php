@@ -16,3 +16,6 @@
     }
 
     var_dump(struct_array(3 , [11, 2, 8, 10, 5, 99, 1, 8, 9]));
+
+
+    echo 'jskasj';
