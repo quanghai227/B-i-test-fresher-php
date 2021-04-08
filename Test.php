@@ -51,3 +51,48 @@
 
     echo "<br/>";
     echo sum_two_largest_number([0, 100, -4, 8, 143, 5, 99, 100]);
+
+    //Bài 3 khoảng cách nhỏ nhất
+    function minimum_between_two_numbers($arr)
+    {
+        $min = 0;
+        if($arr[0] > $arr[1])
+        {
+            $min = $arr[0] - $arr[1];
+        } else{
+            $min = $arr[1] - $arr[0];
+        }
+
+        for ($i = 0; $i <count($arr) -1; $i++) {
+            for ($j = 1; $j < count($arr); $j++)
+            {
+                if (($arr[$i] > $arr[$j]) && (($arr[$i] - $arr[$j]) < $min) )
+                {
+                    $min = $arr[$i] - $arr[$j];
+                }
+                else if (($arr[$i] < $arr[$j]) && (($arr[$j] - $arr[$i]) < $min) ) {
+                    $min = $arr[$j] - $arr[$i];
+                }
+            }
+        }
+
+        $new_array = array();
+        for ($i = 0; $i <count($arr) -1; $i++) {
+            for ($j = 1; $j < count($arr); $j++)
+            {
+                if (($arr[$i] > $arr[$j]) && (($arr[$i] - $arr[$j]) == $min) )
+                {
+                    array_push($new_array, [$arr[$j], $arr[$i]]);
+                }
+                else if (($arr[$i] < $arr[$j]) && (($arr[$j] - $arr[$i]) == $min) ) {
+                    array_push($new_array, [$arr[$i], $arr[$j]]);
+                }
+            }
+        }
+
+        return $new_array;
+
+    }
+
+    echo "<br/>";
+    print_r(minimum_between_two_numbers([1, 5, 4, 7, 9, 0, -10, 13, 93, 14, 15])) ;
